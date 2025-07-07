@@ -4,9 +4,12 @@ import ArticleCard from "@/components/article-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+import { useLocation } from "wouter";
 import type { Article } from "@shared/schema";
 
 export default function Homepage() {
+  const [, setLocation] = useLocation();
+  
   const { data: allArticles = [], isLoading } = useQuery({
     queryKey: ["/api/articles"],
     queryFn: async () => {
@@ -148,12 +151,12 @@ export default function Homepage() {
             <div>
               <h4 className="font-semibold mb-4">Sections</h4>
               <ul className="space-y-2 text-gray-300">
-                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white">Politics</Button></li>
-                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white">World</Button></li>
-                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white">Business</Button></li>
-                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white">Technology</Button></li>
-                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white">Health</Button></li>
-                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white">Climate</Button></li>
+                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white" onClick={() => setLocation("/category/politics")}>Politics</Button></li>
+                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white" onClick={() => setLocation("/category/world")}>World</Button></li>
+                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white" onClick={() => setLocation("/category/business")}>Business</Button></li>
+                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white" onClick={() => setLocation("/category/technology")}>Technology</Button></li>
+                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white" onClick={() => setLocation("/category/health")}>Health</Button></li>
+                <li><Button variant="ghost" className="p-0 h-auto text-gray-300 hover:text-white" onClick={() => setLocation("/category/climate")}>Climate</Button></li>
               </ul>
             </div>
 

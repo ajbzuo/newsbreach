@@ -33,7 +33,11 @@ export class MemStorage implements IStorage {
   private initializeArticles() {
     articlesData.forEach((article) => {
       const id = this.currentArticleId++;
-      const fullArticle: Article = { ...article, id };
+      const fullArticle: Article = { 
+        ...article, 
+        id, 
+        featured: article.featured ?? 0 
+      };
       this.articles.set(id, fullArticle);
     });
   }
@@ -93,7 +97,11 @@ export class MemStorage implements IStorage {
 
   async createArticle(insertArticle: InsertArticle): Promise<Article> {
     const id = this.currentArticleId++;
-    const article: Article = { ...insertArticle, id };
+    const article: Article = { 
+      ...insertArticle, 
+      id, 
+      featured: insertArticle.featured ?? 0 
+    };
     this.articles.set(id, article);
     return article;
   }

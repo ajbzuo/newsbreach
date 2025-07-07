@@ -88,7 +88,9 @@ The application uses two main entities:
 
 ## Changelog
 - July 07, 2025. Initial setup
+- July 07, 2025. Added comprehensive navigation system with working category pages, expanded article database to 25+ articles across all categories, fixed console warnings, and ensured all links work properly for paywall testing
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+User needs: Working navigation links for all categories, paywall testing capability, Fastly CDN compatibility.

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Search, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SearchOverlay from "./search-overlay";
@@ -7,6 +7,7 @@ import SearchOverlay from "./search-overlay";
 export default function Navigation() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [, setLocation] = useLocation();
 
   const categories = [
     { name: "Politics", path: "/category/politics" },
@@ -17,6 +18,11 @@ export default function Navigation() {
     { name: "Climate", path: "/category/climate" },
   ];
 
+  const handleNavClick = (path: string) => {
+    setLocation(path);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
@@ -24,26 +30,30 @@ export default function Navigation() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <Link href="/">
-                <a className="text-2xl font-bold text-time-red hover:opacity-90 transition-opacity">
-                  TimeScope
-                </a>
-              </Link>
+              <button 
+                onClick={() => handleNavClick("/")}
+                className="text-2xl font-bold text-time-red hover:opacity-90 transition-opacity"
+              >
+                TimeScope
+              </button>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/">
-                <a className="text-time-dark hover:text-time-red transition-colors font-medium">
-                  Home
-                </a>
-              </Link>
+              <button 
+                onClick={() => handleNavClick("/")}
+                className="text-time-dark hover:text-time-red transition-colors font-medium"
+              >
+                Home
+              </button>
               {categories.map((category) => (
-                <Link key={category.name} href={category.path}>
-                  <a className="text-time-gray hover:text-time-red transition-colors">
-                    {category.name}
-                  </a>
-                </Link>
+                <button 
+                  key={category.name}
+                  onClick={() => handleNavClick(category.path)}
+                  className="text-time-gray hover:text-time-red transition-colors"
+                >
+                  {category.name}
+                </button>
               ))}
             </div>
 
@@ -79,23 +89,20 @@ export default function Navigation() {
           {isMobileMenuOpen && (
             <div className="md:hidden border-t border-gray-200 py-4">
               <div className="flex flex-col space-y-3">
-                <Link href="/">
-                  <a 
-                    className="text-time-dark hover:text-time-red transition-colors font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Home
-                  </a>
-                </Link>
+                <button 
+                  className="text-time-dark hover:text-time-red transition-colors font-medium text-left"
+                  onClick={() => handleNavClick("/")}
+                >
+                  Home
+                </button>
                 {categories.map((category) => (
-                  <Link key={category.name} href={category.path}>
-                    <a 
-                      className="text-time-gray hover:text-time-red transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {category.name}
-                    </a>
-                  </Link>
+                  <button 
+                    key={category.name}
+                    className="text-time-gray hover:text-time-red transition-colors text-left"
+                    onClick={() => handleNavClick(category.path)}
+                  >
+                    {category.name}
+                  </button>
                 ))}
               </div>
             </div>

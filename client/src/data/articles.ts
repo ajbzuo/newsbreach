@@ -587,5 +587,167 @@ export const articlesData: InsertArticle[] = [
     publishedAt: "2024-12-05",
     readTime: 5,
     featured: 0
+  },
+  {
+    title: "Supreme Court to Hear Landmark Digital Privacy Case",
+    slug: "supreme-court-digital-privacy-case",
+    excerpt: "The highest court will decide whether tech companies can collect user data without explicit consent, potentially reshaping online privacy laws.",
+    content: `<p>The Supreme Court has agreed to hear a landmark case that could fundamentally change how technology companies collect and use personal data, marking the most significant digital privacy decision in decades.</p>
+
+<p>The case, <em>Citizens for Digital Rights v. TechGlobal Corp</em>, centers on whether companies can collect user data through algorithms and third-party tracking without explicit, informed consent from users.</p>
+
+<h2>The Legal Questions</h2>
+
+<p>At stake are fundamental questions about digital privacy in the modern age. The Court will consider whether current privacy policies adequately inform users about data collection practices and whether users have a reasonable expectation of privacy when using free digital services.</p>
+
+<p>The case emerged from a class-action lawsuit filed after TechGlobal was found to be collecting location data, browsing habits, and personal communications from users who had not explicitly agreed to such comprehensive data harvesting.</p>
+
+<h2>Potential Impact</h2>
+
+<p>Legal experts predict that the Court's decision could require companies to fundamentally restructure how they obtain user consent, potentially affecting the business models of major technology platforms.</p>
+
+<p>The ruling is expected by summer 2025 and could establish new precedents for digital privacy rights that extend far beyond the immediate case.</p>`,
+    author: "Rachel Martinez",
+    authorTitle: "Legal Affairs Correspondent",
+    category: "Politics",
+    imageUrl: "https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=600",
+    publishedAt: "2024-12-11",
+    readTime: 6,
+    featured: 0
+  },
+  {
+    title: "Revolutionary Battery Technology Promises 1000-Mile Electric Vehicles",
+    slug: "revolutionary-battery-technology-electric-vehicles",
+    excerpt: "Breakthrough solid-state batteries could eliminate range anxiety and charge to 80% capacity in under 10 minutes.",
+    content: `<p>Scientists at the Advanced Energy Research Institute have achieved a breakthrough in solid-state battery technology that could revolutionize electric vehicles by providing over 1000 miles of range on a single charge.</p>
+
+<p>The new technology replaces traditional liquid electrolytes with solid materials, dramatically increasing energy density while reducing charging times to as little as 8 minutes for 80% capacity.</p>
+
+<h2>Technical Breakthrough</h2>
+
+<p>The key innovation involves a new ceramic electrolyte material that allows lithium ions to move more efficiently while preventing the formation of dendrites that have plagued previous solid-state battery attempts.</p>
+
+<p>Dr. Sarah Chen, lead researcher on the project, explains: "We've solved the fundamental problems that have kept solid-state batteries in the laboratory. Our batteries are not only more powerful but also safer and longer-lasting than anything currently available."</p>
+
+<h2>Market Impact</h2>
+
+<p>Major automakers are already expressing interest in licensing the technology, with commercial applications expected as early as 2027. The advancement could finally make electric vehicles competitive with gasoline cars in terms of convenience and range.</p>
+
+<p>Industry analysts project that the technology could accelerate electric vehicle adoption by addressing the two primary consumer concerns: range anxiety and charging time.</p>`,
+    author: "Michael Thompson",
+    authorTitle: "Technology Correspondent",
+    category: "Technology",
+    imageUrl: "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=600",
+    publishedAt: "2024-12-11",
+    readTime: 5,
+    featured: 0
+  },
+  {
+    title: "Global Trade Agreement Reshapes International Commerce",
+    slug: "global-trade-agreement-international-commerce",
+    excerpt: "12 nations sign comprehensive trade deal that eliminates tariffs on 95% of goods and establishes new digital commerce standards.",
+    content: `<p>Representatives from 12 nations have signed the most comprehensive international trade agreement in over two decades, eliminating tariffs on 95% of traded goods and establishing groundbreaking standards for digital commerce.</p>
+
+<p>The Trans-Pacific Trade Partnership 2.0 includes the United States, Japan, South Korea, Australia, Canada, and seven other Pacific Rim nations, creating a trading bloc that represents 40% of global GDP.</p>
+
+<h2>Key Provisions</h2>
+
+<p>The agreement goes beyond traditional trade barriers to address modern commerce challenges, including cryptocurrency transactions, data flows, and intellectual property protections for digital products.</p>
+
+<p>Significantly, the deal includes binding labor and environmental standards, addressing criticisms of previous trade agreements that focused solely on economic benefits.</p>
+
+<h2>Economic Impact</h2>
+
+<p>Economists project that the agreement could boost participating economies by an average of 1.8% over the next decade, with particular benefits for technology and agricultural sectors.</p>
+
+<p>The deal also establishes new dispute resolution mechanisms designed to prevent trade wars and provide more predictable international commerce rules.</p>`,
+    author: "Jennifer Walsh",
+    authorTitle: "International Business Correspondent",
+    category: "Business",
+    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=600",
+    publishedAt: "2024-12-10",
+    readTime: 6,
+    featured: 0
+  },
+  {
+    title: "European Union Launches Ambitious Space Mining Initiative",
+    slug: "european-union-space-mining-initiative",
+    excerpt: "€50 billion investment aims to establish asteroid mining capabilities by 2035, potentially securing rare earth minerals for clean energy transition.",
+    content: `<p>The European Union has announced an ambitious €50 billion space mining initiative designed to secure critical rare earth minerals from asteroids, potentially revolutionizing supply chains for clean energy technologies.</p>
+
+<p>The European Space Mining Consortium will coordinate efforts across member nations to develop the technology needed to identify, reach, and extract valuable materials from near-Earth asteroids by 2035.</p>
+
+<h2>Strategic Importance</h2>
+
+<p>The initiative addresses Europe's dependence on imports for critical minerals needed in solar panels, wind turbines, and electric vehicle batteries. Current supply chains are vulnerable to geopolitical tensions and environmental concerns.</p>
+
+<p>Dr. Elena Rossi, director of the European Space Agency's resource utilization program, notes: "Space mining isn't science fiction anymore. We have the technology foundation, and this investment will make it reality."</p>
+
+<h2>Technical Challenges</h2>
+
+<p>The program will focus on developing robotic mining systems, advanced propulsion technologies, and orbital processing facilities capable of refining materials in space before returning them to Earth.</p>
+
+<p>Early missions will target asteroids rich in platinum, rare earth elements, and water ice, which could also support future deep space exploration efforts.</p>`,
+    author: "Dr. Andreas Mueller",
+    authorTitle: "Space Technology Correspondent",
+    category: "Science",
+    imageUrl: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=600",
+    publishedAt: "2024-12-10",
+    readTime: 5,
+    featured: 0
+  },
+  {
+    title: "Mental Health Crisis Among Teens Prompts National Response",
+    slug: "mental-health-crisis-teens-national-response",
+    excerpt: "Alarming rise in depression and anxiety among adolescents leads to comprehensive federal mental health initiative in schools.",
+    content: `<p>Rising rates of depression, anxiety, and suicide among teenagers have prompted a comprehensive federal response, including $2 billion in funding for school-based mental health programs and expanded access to counseling services.</p>
+
+<p>Recent data shows that nearly 40% of high school students reported persistent feelings of sadness or hopelessness, representing a 25% increase from pre-pandemic levels.</p>
+
+<h2>Comprehensive Response</h2>
+
+<p>The National Teen Mental Health Initiative will place licensed counselors in every high school with more than 500 students and provide training for teachers to recognize early warning signs of mental health crises.</p>
+
+<p>The program also includes expanded telehealth services, allowing students to access mental health support from home, and new partnerships with community mental health organizations.</p>
+
+<h2>Expert Perspectives</h2>
+
+<p>Dr. Maria Santos, a leading adolescent psychologist, emphasizes that the crisis requires both immediate intervention and long-term cultural changes: "We need to address not just individual cases but the underlying pressures facing young people today."</p>
+
+<p>The initiative recognizes the role of social media, academic pressure, and economic uncertainty in contributing to teen mental health challenges and includes programs designed to build resilience and coping skills.</p>`,
+    author: "Dr. Rebecca Johnson",
+    authorTitle: "Health and Wellness Correspondent",
+    category: "Health",
+    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=600",
+    publishedAt: "2024-12-09",
+    readTime: 6,
+    featured: 0
+  },
+  {
+    title: "Diplomatic Breakthrough Ends Decade-Long Regional Conflict",
+    slug: "diplomatic-breakthrough-regional-conflict",
+    excerpt: "Historic peace agreement signed between neighboring nations resolves territorial disputes and establishes framework for economic cooperation.",
+    content: `<p>After more than a decade of territorial disputes and intermittent conflict, two neighboring nations have signed a comprehensive peace agreement that resolves border issues and establishes new frameworks for economic and cultural cooperation.</p>
+
+<p>The breakthrough came after 18 months of intensive diplomatic negotiations mediated by the United Nations and supported by regional powers committed to stability.</p>
+
+<h2>Peace Agreement Details</h2>
+
+<p>The accord establishes new internationally recognized borders, creates joint economic zones, and includes provisions for the safe return of displaced populations to their homes.</p>
+
+<p>Significantly, both nations have agreed to joint infrastructure projects, including a shared transportation network and coordinated water management systems that had been sources of previous tensions.</p>
+
+<h2>Regional Impact</h2>
+
+<p>The agreement is expected to unlock billions in economic development and foreign investment that had been deterred by regional instability. International observers view the settlement as a model for resolving similar conflicts elsewhere.</p>
+
+<p>UN Secretary-General praised the agreement as "proof that even the most entrenched conflicts can be resolved through dialogue, compromise, and mutual respect for international law."</p>`,
+    author: "Carlos Rivera",
+    authorTitle: "International Affairs Correspondent",
+    category: "World",
+    imageUrl: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=600",
+    publishedAt: "2024-12-09",
+    readTime: 5,
+    featured: 0
   }
 ];
