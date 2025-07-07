@@ -1,8 +1,34 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import compression from "compression";
+import helmet from "helmet";
 
 const app = express();
+
+// Production middleware
+if (process.env.NODE_ENV === "production") {
+  // Enable gzip compression
+  app.use(compression());
+  
+  // Security headers
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:", "https:"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        connectSrc: ["'self'", "https:"],
+      },
+    },
+  }));
+  
+  // Trust proxy for proper IP forwarding behind CDN
+  app.set('trust proxy', 1);
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -34,6 +60,11 @@ app.use((req, res, next) => {
   });
 
   next();
+});
+
+// Health check endpoint for load balancers
+app.get("/health", (req, res) => {
+  res.json({ status: "healthy", timestamp: new Date().toISOString() });
 });
 
 (async () => {
