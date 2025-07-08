@@ -1,35 +1,31 @@
-name: Deploy to GitHub Pages
+name: Build & Deploy to GitHub Pages
 
-# Run on every push to main
 on:
   push:
     branches:
-      - main
+      - main    # or your default branch
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout code
+      # 1. Check out your code
       - uses: actions/checkout@v3
-        # prevent Actions from overwriting our token
-        with:
-          persist-credentials: false
 
-      # 2. Setup Node.js
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
+      # 2. Use Node.js 18 with npm cache
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
 
-      # 3. Install deps
-      - name: Install dependencies
-        run: npm ci
+      # 3. Install dependencies and run your build
+      - run: npm ci
+      - run: npm run build
 
-      # 4. Build & deploy
-      - name: Build & Publish to gh-pages
-        run: npm run deploy
-        env:
-          # Tells gh-pages CLI to use this token when pushing
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # 4. Push the contents of dist/ to gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
