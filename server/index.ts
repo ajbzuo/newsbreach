@@ -1,18 +1,15 @@
 import express, { type Request, Response, NextFunction } from "express";
+import serverless from "serverless-http";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
 import compression from "compression";
 import helmet from "helmet";
 
 const app = express();
 
-// Production middleware
-if (process.env.NODE_ENV === "production") {
-  // Enable gzip compression
-  app.use(compression());
-  
-  // Security headers
-  app.use(helmet({
+// Production middleware (runs in both dev and prod serverless)
+app.use(compression());
+app.use(
+  helmet({
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
@@ -23,72 +20,51 @@ if (process.env.NODE_ENV === "production") {
         connectSrc: ["'self'", "https:"],
       },
     },
-  }));
-  
-  // Trust proxy for proper IP forwarding behind CDN
-  app.set('trust proxy', 1);
-}
+  })
+);
+app.set("trust proxy", 1);
 
+// Body parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Request logging middleware
+// Request logging
 app.use((req, res, next) => {
   const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined;
-
-  // Hijack res.json to capture body
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
+  let captured: any;
+  const originalJson = res.json;
+  res.json = (body: any) => {
+    captured = body;
+    return originalJson.call(res, body);
   };
 
   res.on("finish", () => {
-    if (path.startsWith("/api")) {
+    if (req.path.startsWith("/api")) {
       const duration = Date.now() - start;
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-      log(logLine);
+      let line = `${req.method} ${req.path} ${res.statusCode} in ${duration}ms`;
+      if (captured) line += ` :: ${JSON.stringify(captured)}`;
+      console.log(line.substring(0, 80));
     }
   });
 
   next();
 });
 
-// Health check endpoint for load balancers
+// Health check
 app.get("/health", (_req, res) => {
   res.json({ status: "healthy", timestamp: new Date().toISOString() });
 });
 
-(async () => {
-  // Register API routes and get the underlying HTTP server
-  const server = await registerRoutes(app);
+// Register all API routes
+registerRoutes(app);
 
-  // Centralized error handler (must come after all routes)
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-    res.status(status).json({ message });
-    log(`Error ${status}: ${message}`);
-  });
+// Centralized error handler (after routes)
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(status).json({ message });
+  console.error(`Error ${status}: ${message}`);
+});
 
-  // Setup Vite in development, static serving in production
-  if (app.get('env') === 'development') {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
-
-  // ALWAYS serve the app on port 5000 (API + client)
-  const port = 5000;
-  server.listen(port, '0.0.0.0', () => {
-    log(`serving on port ${port}`);
-  });
-})();
+// Export as a serverless handler for Vercel
+export default serverless(app);
