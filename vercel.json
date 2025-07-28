@@ -12,9 +12,13 @@
       }
     ],
     "routes": [
-      // 1) any /api/* call goes into your Node app
-      { "src": "/api/(.*)", "dest": "server/index.ts" },
-      // 2) everything else returns the SPA's index.html
-      { "src": "/(.*)",      "dest": "dist/public/index.html" }
+      {
+        "src": "/api/(.*)",
+        "dest": "server/index.ts"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "dist/public/index.html"
+      }
     ]
   }
